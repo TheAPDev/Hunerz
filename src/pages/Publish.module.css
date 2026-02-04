@@ -1,0 +1,400 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  color: var(--platinum);
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: var(--platinum-dark);
+  font-size: 0.95rem;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.publishBtn {
+  background: linear-gradient(135deg, var(--electric-blue) 0%, var(--electric-blue-dark) 100%);
+  color: white;
+  padding: 1.5rem 3rem;
+  border-radius: 12px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.publishBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: var(--charcoal-black);
+  border: 1px solid var(--charcoal-light);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHeader {
+  padding: 2rem;
+  border-bottom: 1px solid var(--charcoal-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalHeader h2 {
+  color: var(--platinum);
+}
+
+.closeBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--charcoal-light);
+  color: var(--platinum);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: var(--charcoal-black);
+  color: var(--error);
+}
+
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.stepDot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--charcoal-light);
+  color: var(--platinum-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.stepDot.active {
+  background: linear-gradient(135deg, var(--electric-blue) 0%, var(--electric-blue-dark) 100%);
+  color: white;
+  transform: scale(1.1);
+}
+
+.stepLine {
+  height: 2px;
+  width: 60px;
+  background: var(--charcoal-light);
+  transition: all 0.3s ease;
+}
+
+.stepLine.active {
+  background: var(--electric-blue);
+}
+
+.modalBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  color: var(--platinum);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  background: var(--charcoal-light);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0.875rem 1rem;
+  color: var(--platinum);
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus {
+  border-color: var(--electric-blue);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.inputGroup input::placeholder,
+.inputGroup textarea::placeholder {
+  color: var(--platinum-dark);
+}
+
+.difficultyButtons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.difficultyBtn {
+  flex: 1;
+  padding: 0.875rem;
+  background: var(--charcoal-light);
+  color: var(--platinum);
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.difficultyBtn:hover {
+  background: var(--charcoal-black);
+  border: 1px solid var(--electric-blue);
+}
+
+.difficultyBtn.active {
+  background: linear-gradient(135deg, var(--electric-blue) 0%, var(--electric-blue-dark) 100%);
+  color: white;
+}
+
+.skillsSelector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skillChip {
+  background: var(--charcoal-light);
+  color: var(--platinum);
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.skillChip:hover {
+  background: var(--charcoal-black);
+  border-color: var(--electric-blue);
+}
+
+.skillChip.selected {
+  background: linear-gradient(135deg, var(--electric-blue) 0%, var(--electric-blue-dark) 100%);
+  color: white;
+  border-color: var(--electric-blue);
+}
+
+.arrayInput {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.arrayInput input {
+  flex: 1;
+}
+
+.removeBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.removeBtn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.addBtn {
+  background: rgba(14, 165, 233, 0.1);
+  color: var(--electric-blue);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  transition: all 0.2s ease;
+}
+
+.addBtn:hover {
+  background: rgba(14, 165, 233, 0.15);
+  border-color: var(--electric-blue);
+}
+
+.reviewSection {
+  background: var(--charcoal-light);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.reviewSection h3 {
+  color: var(--platinum);
+  margin-bottom: 1rem;
+}
+
+.reviewItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--charcoal-black);
+}
+
+.reviewItem:last-child {
+  border-bottom: none;
+}
+
+.reviewLabel {
+  color: var(--platinum-dark);
+  font-size: 0.9rem;
+}
+
+.reviewValue {
+  color: var(--platinum);
+  font-weight: 600;
+}
+
+.modalFooter {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--charcoal-light);
+  display: flex;
+  gap: 1rem;
+}
+
+.secondaryBtn {
+  background: var(--charcoal-light);
+  color: var(--platinum);
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.secondaryBtn:hover {
+  background: var(--charcoal-black);
+  border: 1px solid var(--electric-blue);
+}
+
+.primaryBtn,
+.publishBtnFinal {
+  background: linear-gradient(135deg, var(--electric-blue) 0%, var(--electric-blue-dark) 100%);
+  color: white;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+}
+
+.primaryBtn:hover,
+.publishBtnFinal:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.flexSpacer {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: 1rem;
+  }
+
+  .modal {
+    max-height: 95vh;
+  }
+
+  .modalHeader,
+  .modalBody,
+  .modalFooter {
+    padding: 1.5rem;
+  }
+
+  .difficultyButtons {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,485 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  color: var(--platinum);
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: var(--platinum-dark);
+  font-size: 0.95rem;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.searchBar {
+  flex: 1;
+  background: var(--charcoal-black);
+  border: 1px solid var(--charcoal-light);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.searchBar:focus-within {
+  border-color: var(--electric-blue);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.searchBar svg {
+  color: var(--platinum-dark);
+}
+
+.searchBar input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--platinum);
+  font-size: 0.95rem;
+}
+
+.searchBar input::placeholder {
+  color: var(--platinum-dark);
+}
+
+.filterBtn {
+  background: var(--charcoal-black);
+  border: 1px solid var(--charcoal-light);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  color: var(--platinum);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.filterBtn:hover {
+  border-color: var(--electric-blue);
+  color: var(--electric-blue);
+}
+
+.filterBtn.active {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%);
+  border-color: var(--electric-blue);
+  color: var(--electric-blue);
+}
+
+.badge {
+  background: var(--electric-blue);
+  color: white;
+  padding: 0.125rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.filtersPanel {
+  background: var(--charcoal-black);
+  border: 1px solid var(--charcoal-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.filtersHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.filtersHeader h3 {
+  color: var(--platinum);
+  font-size: 1rem;
+}
+
+.clearBtn {
+  background: rgba(14, 165, 233, 0.1);
+  color: var(--electric-blue);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.clearBtn:hover {
+  background: rgba(14, 165, 233, 0.2);
+}
+
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skillChip {
+  background: var(--charcoal-light);
+  color: var(--platinum);
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.skillChip:hover {
+  background: var(--charcoal-black);
+  border-color: var(--electric-blue);
+}
+
+.skillChip.selected {
+  background: linear-gradient(135deg, var(--electric-blue) 0%, var(--electric-blue-dark) 100%);
+  color: white;
+  border-color: var(--electric-blue);
+}
+
+.submissionsList {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.submissionCard {
+  background: var(--charcoal-black);
+  border: 1px solid var(--charcoal-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 1.5rem;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submissionCard:hover {
+  border-color: var(--electric-blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.studentInfo {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.studentInfo h3 {
+  color: var(--platinum);
+  margin-bottom: 0.25rem;
+}
+
+.email {
+  color: var(--platinum-dark);
+  font-size: 0.9rem;
+}
+
+.location {
+  color: var(--platinum-dark);
+  font-size: 0.85rem;
+}
+
+.submissionInfo {
+  flex: 1;
+}
+
+.projectTitle {
+  color: var(--platinum);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.submittedDate {
+  color: var(--platinum-dark);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skillTag {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%);
+  color: var(--electric-blue);
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.825rem;
+  font-weight: 500;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+.moreSkills {
+  color: var(--platinum-dark);
+  padding: 0.375rem 0.75rem;
+  font-size: 0.825rem;
+}
+
+.statusBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.score {
+  text-align: center;
+}
+
+.scoreValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--electric-blue);
+  line-height: 1;
+}
+
+.scoreLabel {
+  font-size: 0.75rem;
+  color: var(--platinum-dark);
+  margin-top: 0.25rem;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalContent {
+  background: var(--charcoal-black);
+  border: 1px solid var(--charcoal-light);
+  border-radius: 16px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHeader {
+  padding: 2rem;
+  border-bottom: 1px solid var(--charcoal-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalHeader h2 {
+  color: var(--platinum);
+}
+
+.closeBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--charcoal-light);
+  color: var(--platinum);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: var(--charcoal-black);
+  color: var(--error);
+}
+
+.modalBody {
+  padding: 2rem;
+}
+
+.studentSection {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--charcoal-light);
+}
+
+.modalAvatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.studentSection h3 {
+  color: var(--platinum);
+  margin-bottom: 0.25rem;
+}
+
+.studentSection p {
+  color: var(--platinum-dark);
+  font-size: 0.95rem;
+}
+
+.bio {
+  margin-top: 0.75rem !important;
+  line-height: 1.6 !important;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h4 {
+  color: var(--platinum);
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+}
+
+.section p {
+  color: var(--platinum-dark);
+  line-height: 1.6;
+}
+
+.allSkills {
+  display: grid;
+  gap: 1rem;
+}
+
+.skillItem {
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.skillName {
+  color: var(--platinum);
+  font-weight: 500;
+}
+
+.skillBar {
+  height: 8px;
+  background: var(--charcoal-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skillBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--electric-blue) 0%, var(--electric-blue-light) 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.skillScore {
+  color: var(--electric-blue);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.statusBadgeLarge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+  }
+
+  .submissionCard {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .studentInfo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .skillItem {
+    grid-template-columns: 1fr auto;
+  }
+
+  .skillName {
+    grid-column: 1 / -1;
+  }
+}
