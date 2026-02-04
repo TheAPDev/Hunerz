@@ -1,13 +1,32 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { TrendingUp, Users, CheckCircle, Clock } from 'lucide-react';
 import { supabase } from '../supabaseClient';
 import styles from './Home.module.css';
+
+// Explicit types for project and location state
+export type ProjectItem = {
+  id: string;
+  title: string;
+  description: string;
+  difficulty: 'Easy' | 'Medium' | 'Hard';
+  is_published: boolean;
+  published_at: Date | null;
+  creator_id: string;
+  acceptance_rate?: number;
+};
+
+export type LocationState = {
+  responsesData?: ProjectItem[];
+};
+
 export const Home = () => {
-  const [projects, setProjects] = useState([]);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const location = useLocation();
+  const [projects, setProjects] = useState<ProjectItem[]>([]);
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [fetchError, setFetchError] = useState('');
-  const location = window.location;
+
   useEffect(() => {
     const fetchProjects = async () => {
       const { data, error } = await supabase
@@ -18,7 +37,7 @@ export const Home = () => {
         setFetchError(error.message);
       } else if (data) {
         // Convert published_at to Date object
-        const projectsWithDate = data.map((p) => ({
+        const projectsWithDate: ProjectItem[] = data.map((p: any) => ({
           ...p,
           published_at: p.published_at ? new Date(p.published_at) : null,
         }));
@@ -33,21 +52,8 @@ export const Home = () => {
     (a, b) => (b.published_at?.getTime?.() || 0) - (a.published_at?.getTime?.() || 0)
   );
 
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case 'Easy':
-        return 'var(--success)';
-      case 'Medium':
-        return 'var(--warning)';
-      case 'Hard':
-        return 'var(--error)';
-      default:
-        return 'var(--platinum)';
-    }
-  };
-
-  // If you want to show responses, fetch from a child table or view
-  const responsesData = [];
+  // If you want to show responses, fetch from navigation state or fallback to empty array
+  const responsesData: ProjectItem[] = location.state?.responsesData ?? [];
 
   // acceptance_rate should come from SQL query alias if available
   const acceptanceData = selectedProject?.acceptance_rate !== undefined
@@ -71,7 +77,7 @@ export const Home = () => {
 
       <div className={styles.statsGrid}>
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ background: 'rgba(14, 165, 233, 0.1)' }}>
+          <div className={`${styles.statIcon} ${styles.statIconBlue}`}>
             <Users size={24} style={{ color: 'var(--electric-blue)' }} />
           </div>
           <div className={styles.statContent}>
@@ -81,7 +87,7 @@ export const Home = () => {
         </div>
 
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ background: 'rgba(16, 185, 129, 0.1)' }}>
+          <div className={`${styles.statIcon} ${styles.statIconGreen}`}>
             <CheckCircle size={24} style={{ color: 'var(--success)' }} />
           </div>
           <div className={styles.statContent}>
@@ -91,7 +97,7 @@ export const Home = () => {
         </div>
 
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ background: 'rgba(245, 158, 11, 0.1)' }}>
+          <div className={`${styles.statIcon} ${styles.statIconYellow}`}>
             <TrendingUp size={24} style={{ color: 'var(--warning)' }} />
           </div>
           <div className={styles.statContent}>
@@ -101,7 +107,7 @@ export const Home = () => {
         </div>
 
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ background: 'rgba(184, 184, 184, 0.1)' }}>
+          <div className={`${styles.statIcon} ${styles.statIconGray}`}>
             <Clock size={24} style={{ color: 'var(--platinum-dark)' }} />
           </div>
           <div className={styles.statContent}>
@@ -164,7 +170,7 @@ export const Home = () => {
       <div className={styles.projectsSection}>
         <h2>Published Projects</h2>
         {fetchError && (
-          <div style={{ color: 'red', marginBottom: '1rem' }}>
+          <div className={styles.fetchError}>
             Error fetching projects: {fetchError}
           </div>
         )}
