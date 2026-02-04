@@ -51,7 +51,7 @@ export const Login = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles.header}>
-          <h1 className={styles.logo}>Hunaar</h1>
+          <h1 className={styles.logo}>Hunerz</h1>
           <p className={styles.subtitle}>Professional Admin Portal</p>
         </div>
 
